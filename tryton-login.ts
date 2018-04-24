@@ -46,5 +46,4 @@ export class TrytonLoginPage{
   public getCurrentUserPermissions() {
     this.currentUserId = this.sessionService.isLoggedInPermissions();
   }
-
 }
