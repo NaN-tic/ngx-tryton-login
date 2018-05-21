@@ -31,7 +31,7 @@ export class TrytonLoginPage{
     this.sessionService.doLogin(environment.database, login, password).subscribe(
       data => {
           if (data['userId'] && data['sessionId']) {
-            this.router.navigateByUrl('/select-company');
+            this.router.navigateByUrl(environment.navigate_login);
           }
           else if (data) {
             alert('Incorrect username or password')
