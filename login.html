@@ -1,12 +1,12 @@
 <div id="login-tryton">
   <form class="login-form" (ngSubmit)="login($event)">
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="input-full-width">
       <input #user_name matInput placeholder="{{ 'Username' | translate:lang }} *" type="text" autocomplete="false">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="input-full-width">
       <input #user_pass matInput placeholder="{{ 'Password' | translate:lang }} *" type="password" autocomplete="false">
     </mat-form-field>
-    <button mat-raised-button type="submit" class="mdl-button">{{ 'Sign In' | translate:lang}}</button>
+    <button mat-raised-button type="submit" class="mdl-button">{{ 'Login' | translate:lang}}</button>
   </form>
 </div>
