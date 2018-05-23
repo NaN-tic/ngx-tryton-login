@@ -2,6 +2,7 @@ import { Component, Input, ViewChild, } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Language } from 'angular-l10n';
+
 import { SessionService } from '../ngx-tryton';
 
 // Models
@@ -14,6 +15,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./login.component.scss']
 })
 export class TrytonLoginComponent{
+  @Language() lang: string;
   loginForm: FormGroup;
   loading = false;
   submitted = false;
