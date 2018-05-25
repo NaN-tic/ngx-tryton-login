@@ -51,7 +51,7 @@ export class TrytonLoginComponent{
   }
 
   public login(login, password) {
-    this.sessionService.doLogin(environment.database, login, password).subscribe(
+    this.sessionService.doLogin(environment.database, login, password, true).subscribe(
       data => {
           if (data['userId'] && data['sessionId']) {
             this.router.navigateByUrl(environment.navigate_login);

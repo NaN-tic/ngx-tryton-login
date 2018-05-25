@@ -21,7 +21,14 @@ export class TrytonLogoutComponent{
   }
 
   public logout() {
-    this.sessionService.doLogout();
-    this.router.navigateByUrl(environment.navigate_logout);
+    this.sessionService.doLogout().subscribe(
+      res => {
+        this.sessionService.clearSession();
+        this.router.navigateByUrl(environment.navigate_logout);
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 }
