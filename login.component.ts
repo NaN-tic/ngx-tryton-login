@@ -7,7 +7,9 @@ import { SessionService } from '../ngx-tryton';
 
 // Models
 import { User } from '../user/user.model'
+
 import { environment } from '../../environments/environment';
+import { settings } from '../../settings';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +31,7 @@ export class TrytonLoginComponent{
 
   ngOnInit() {
     if (sessionStorage.getItem('sessionId')) {
-      this.router.navigateByUrl(environment.navigate_login);
+      this.router.navigateByUrl(settings.navigate_login);
     }
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -56,7 +58,7 @@ export class TrytonLoginComponent{
       data => {
           if (data['userId'] && data['sessionId']) {
             this.getPreferences();
-            this.router.navigateByUrl(environment.navigate_login);
+            this.router.navigateByUrl(settings.navigate_login);
           }
           else if (data) {
             alert('Incorrect username or password')

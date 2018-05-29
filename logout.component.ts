@@ -2,8 +2,8 @@ import { Component, Input, ViewChild, } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from '../ngx-tryton';
 
-// Models
 import { environment } from '../../environments/environment';
+import { settings } from '../../settings';
 
 @Component({
   selector: 'app-logout',
@@ -24,7 +24,7 @@ export class TrytonLogoutComponent{
     this.sessionService.doLogout().subscribe(
       res => {
         this.sessionService.clearSession();
-        this.router.navigateByUrl(environment.navigate_logout);
+        this.router.navigateByUrl(settings.navigate_logout);
       },
       error => {
         console.log(error);
