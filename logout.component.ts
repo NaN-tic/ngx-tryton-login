@@ -23,12 +23,13 @@ export class TrytonLogoutComponent{
   public logout() {
     this.sessionService.doLogout().subscribe(
       res => {
-        this.sessionService.clearSession();
-        this.router.navigateByUrl(settings.navigate_logout);
+        console.log('Logout');
       },
       error => {
         console.log(error);
       }
     )
+    this.sessionService.clearSession();
+    this.router.navigateByUrl(settings.navigate_logout);
   }
 }
