@@ -1,11 +1,11 @@
 <div id="login-tryton">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
       <mat-form-field class="input-full-width">
-        <input formControlName="username" matInput placeholder="{{ 'Username' | translate:lang }} *" type="text" autocomplete="false" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+        <input formControlName="username" matInput placeholder="{{ 'Username' | translate:lang }} *" type="text" autocomplete="false"/>
       </mat-form-field>
 
       <mat-form-field class="input-full-width">
-        <input #password formControlName="password" matInput placeholder="{{ 'Password' | translate:lang }} *" type="password" autocomplete="false" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+        <input #password formControlName="password" matInput placeholder="{{ 'Password' | translate:lang }} *" type="password" autocomplete="false"/>
       </mat-form-field>
 
       <button mat-raised-button type="submit" class="mdl-button">{{ 'Login' | translate:lang}}</button>
