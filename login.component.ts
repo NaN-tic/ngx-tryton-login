@@ -2,6 +2,7 @@ import { Component, Input, ViewChild, } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocaleService, Language } from 'angular-l10n';
+import { Observable } from 'rxjs/Observable';
 
 import { SessionService } from '../ngx-tryton';
 
@@ -54,8 +55,9 @@ export class TrytonLoginComponent{
     this.sessionService.doLogin(environment.database, login, password, false).subscribe(
       data => {
           if (data['userId'] && data['sessionId']) {
-            this.getPreferences();
-            this.router.navigateByUrl(settings.navigate_login);
+            this.getPreferences().subscribe(response => {
+              this.router.navigateByUrl(settings.navigate_login);
+            });
           }
           else if (data) {
             alert('Incorrect username or password')
@@ -67,12 +69,13 @@ export class TrytonLoginComponent{
     );
   }
 
-  public getPreferences() {
-    this.sessionService.rpc('model.res.user.get_preferences', [true], {})
-      .subscribe(preferences => {
+  public getPreferences(): Observable<boolean> {
+    return this.sessionService.rpc('model.res.user.get_preferences', [true], {})
+      .map(preferences => {
         let language = preferences['language'] || 'en';
         this.sessionService.setDefaultContext(preferences);
         this.locale.setCurrentLanguage(language);
+        return true;
       });
   }
 }
