@@ -60,11 +60,11 @@ export class TrytonLoginComponent{
             });
           }
           else if (data) {
-            alert('Incorrect username or password')
+            alert('Incorrect username or password');
           }
         },
       err => {
-        alert(err);
+        alert('Incorrect username or password');
       }
     );
   }
